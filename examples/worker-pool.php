@@ -16,19 +16,19 @@ Coroutine\create(function() {
 
     $coroutines[] = Coroutine\create(function () use ($pool) {
         $url = 'https://google.com';
-        $result = yield from $pool->enqueue(new BlockingTask('file_get_contents', $url));
+        $result = (yield  $pool->enqueue(new BlockingTask('file_get_contents', $url)));
         printf("Read from %s: %d bytes\n", $url, strlen($result));
     });
 
     $coroutines[] = Coroutine\create(function () use ($pool) {
         $url = 'https://icicle.io';
-        $result = yield from $pool->enqueue(new BlockingTask('file_get_contents', $url));
+        $result = (yield  $pool->enqueue(new BlockingTask('file_get_contents', $url)));
         printf("Read from %s: %d bytes\n", $url, strlen($result));
     });
 
     $coroutines[] = Coroutine\create(function () use ($pool) {
         $url = 'https://github.com';
-        $result = yield from $pool->enqueue(new BlockingTask('file_get_contents', $url));
+        $result = (yield $pool->enqueue(new BlockingTask('file_get_contents', $url)));
         printf("Read from %s: %d bytes\n", $url, strlen($result));
     });
 
